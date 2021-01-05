@@ -13,7 +13,7 @@ The top-level [Makefile](https://github.com/derekenos/esp32-iot-project/blob/mai
 2. Create an initial `config.json` by copying [config.json.template](https://github.com/derekenos/esp32-iot-project/blob/main/filesystem/data/config.json.template)
 3. Create a symlink to `filesystem` in the `micropython-docker` subdir called `devicefs`
 4. Use `micropython-docker` to erase, flash, and copy application files to the device
-  - Not that Docker will need to build the `micropython-esp32` image when you first run this.
+  - Note that Docker will need to build the `micropython-esp32` image the first time you run this.
 
 ### Do it
 Connect the ESP32 to your computer via USB and run the following command in the repo root:
@@ -25,7 +25,7 @@ make
 See https://github.com/derekenos/micropython-docker/tree/esp32#connect-to-the-micropython-repl
 
 ## Helper Scripts
-Once `femtoweb` is running, you can use the `./put` and `./reset` helper scripts to write files to and reset the device.
+Once `femtoweb` is running, you can use the `./put` and `./reset` helper scripts to copy files and reset the device.
 
 ### put
 `put` expects a single `filesystem` directory sub-path argument.
