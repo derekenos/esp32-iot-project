@@ -2,9 +2,10 @@
 An ESP32 / Micropython project template that uses [micropython-docker](https://github.com/derekenos/micropython-docker/tree/esp32) (`esp32` branch) for device administration and [femtoweb](https://github.com/derekenos/femtoweb/tree/micropython) (`micropython` branch) as HTTP and web application server.
 
 ## Dependencies
-- make
-- docker
-- docker-compose
+- make (`v4.1`)
+- docker (`v19.03.13`)
+- docker-compose (`v1.25.3`)
+- linux? (`Ubuntu 18.04`)
 
 ## Program the ESP32
 The top-level [Makefile](https://github.com/derekenos/esp32-iot-project/blob/main/Makefile) defines a single target that will:
@@ -15,7 +16,24 @@ The top-level [Makefile](https://github.com/derekenos/esp32-iot-project/blob/mai
   - Not that Docker will need to build the `micropython-esp32` image when you first run this.
 
 ### Do it
-In the repo root, run the command:
+Connect the ESP32 to your computer via USB and run the following command in the repo root:
 ```
 make
 ```
+
+## Connect to REPL
+See https://github.com/derekenos/micropython-docker/tree/esp32#connect-to-the-micropython-repl
+
+## Helper Scripts
+Once `femtoweb` is running, you can use the `./put` and `./reset` helper scripts to write files to and reset the device.
+
+### put
+`put` expects a single `filesystem` directory sub-path argument.
+
+Example:
+```
+./put filesystem/main.py
+```
+
+### reset
+`reset` will trigger a device reset and takes no arguments.
