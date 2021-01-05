@@ -1,0 +1,44 @@
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>femtoweb</title>
+    <script>
+     function init() {
+       // Add delete button handler.
+       document.getElementById("delete-example").addEventListener(
+         "click", async () => {
+           const res = await fetch('/_fs/example.txt', {method: "DELETE"})
+           if (res.status === 200) {
+             alert("Deleted 'example.txt'")
+           } else if (res.status === 404) {
+             alert("'example.txt' does not exist!")
+           }
+       })
+     }
+     document.addEventListener("DOMContentLoaded", () => init())
+    </script>
+  </head>
+
+  <body>
+    <h1>Hello!</h1>
+    <h2>Some fun things to try</h2>
+    <p>
+    View <code>config.json</code> via the filesystem GET endpoint: <a href="/_fs/data/config.json">/_fs/data/config.json</a>
+    </p>
+    <p>
+      You can (carefully) edit <code>config.json</code> right here in the browser: <a href="/_fs/data/config.json?edit=1">/_fs/data/config.json?edit=1</a>
+    </p>
+    <p>
+      Create a new file called <code>example.txt</code> in the filesystem root: <a href="/_fs/example.txt?edit=1&create=1">/_fs/example.txt?edit=1&create=1</a>
+    </p>
+    <p>
+      Delete <code>example.txt</code>: <button id="delete-example">Delete</button>
+    </p>
+    <p>
+      Try the <code>echo</code> endpoint: <a href="/echo?text=hello">/echo?text=hello</a>
+    </p>
+  </body>
+
+</html>
