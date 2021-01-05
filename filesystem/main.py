@@ -3,7 +3,10 @@
 """
 import uasyncio
 
-from femtoweb import filesystem_http_endpoints
+from femtoweb import (
+    filesystem_http_endpoints,
+    machine_http_endpoints,
+)
 from femtoweb.server import (
     _200,
     GET,
@@ -34,8 +37,9 @@ if __name__ == '__main__':
     # Get the async event loop.
     event_loop = uasyncio.get_event_loop()
 
-    # Attach the filesystem HTTP endpoints.
+    # Attach the filesystem and machine HTTP endpoints.
     filesystem_http_endpoints.attach(PUBLIC_ROOT)
+    machine_http_endpoints.attach()
 
     # Create a webserver task.
     event_loop.create_task(serve())
