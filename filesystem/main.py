@@ -4,8 +4,8 @@
 import uasyncio
 
 from femtoweb import (
-    filesystem_http_endpoints,
-    machine_http_endpoints,
+    filesystem_endpoints,
+    machine_endpoints,
 )
 from femtoweb.server import (
     _200,
@@ -21,7 +21,7 @@ async def init_app():
     # Define a root endpoint handler.
     @route('/', methods=(GET,))
     async def index(request):
-        return filesystem_http_endpoints._fs_GET(
+        return filesystem_endpoints._fs_GET(
             PUBLIC_ROOT,
             '/public/index.html'
         )
@@ -38,8 +38,8 @@ if __name__ == '__main__':
     event_loop = uasyncio.get_event_loop()
 
     # Attach the filesystem and machine HTTP endpoints.
-    filesystem_http_endpoints.attach(PUBLIC_ROOT)
-    machine_http_endpoints.attach()
+    filesystem_endpoints.attach(PUBLIC_ROOT)
+    machine_endpoints.attach()
 
     # Create a webserver task.
     event_loop.create_task(serve())
