@@ -2,5 +2,5 @@
 	path = micropython-docker
 	url = https://github.com/derekenos/micropython-docker
 [submodule "filesystem/femtoweb"]
-	path = filesystem/femtoweb
+	path = filesystem/modules/femtoweb
 	url = https://github.com/derekenos/femtoweb

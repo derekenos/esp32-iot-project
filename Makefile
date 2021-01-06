@@ -15,7 +15,7 @@ default:
 	cd micropython-docker; \
 	ln --symbolic --no-dereference --force ../filesystem devicefs; \
 	make erase-esp32-flash; \
-	make flash-esp32-firmware; \
+	make compile-and-flash-esp32-firmware; \
 	make configure-device;
 # Tell the user how to connect.
 	@echo "Connect to the 'iot_project' WiFi Access Point and surf your web browser over to http://192.168.4.1"
